@@ -1,14 +1,11 @@
 from django.http import HttpResponseRedirect,Http404
-from django.shortcuts import get_object_or_404, render,redirect
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.contrib import messages
-from django.contrib.auth.models import User,auth
 from django.contrib.auth.decorators import login_required
 
-from .models import Question, Choice
+from polls.models import Question, Choice
 
 
-@login_required
 def index(request):
   latest_question_list = Question.objects.order_by('-pub_date')[:5]
   context = {'latest_question_list': latest_question_list}
@@ -18,7 +15,7 @@ def index(request):
 @login_required
 def detail(request, question_id):
   try:
-    question = Question.objects.get(pk=question_id)
+    question = Question.objects.get(pk =question_id)
   except Question.DoesNotExist:
     raise Http404("Question does not exist")
   return render(request, 'polls/detail.html', { 'question': question })
