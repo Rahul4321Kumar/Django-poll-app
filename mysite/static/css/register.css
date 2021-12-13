@@ -1,0 +1,23 @@
+body {
+  background: #3d3d3d;
+  font-family: "Lato", sans-serif;
+}
+
+div.container {
+  width: 500px;
+  padding: 10% 0 0;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-right: 190px;
+  color: aliceblue;
+}
+
+.button {
+  margin-left: 500px;
+}
+label {
+  color: white;
+}
