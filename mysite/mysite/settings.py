@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls',
     'accounts'
+    'django_celery_results'
     
 ]
 
@@ -110,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+AUTH_USER_MODEL = 'accounts.MyUser'
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -124,3 +127,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[STATIC_DIR,]
+
+
+# CELERY SETTINGS
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_RESULT_BACKEND = 'django-db'
