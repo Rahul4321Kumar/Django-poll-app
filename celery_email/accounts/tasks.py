@@ -10,5 +10,6 @@ logger = get_task_logger(__name__)
 
 @shared_task(name="send_confirmation_mail_task")
 def send_confirmation_mail_task(username, email):
+    print("task me ", username, email)
     logger.info("Sent Confirmation Email")
     return send_confirmation_mail(username, email)

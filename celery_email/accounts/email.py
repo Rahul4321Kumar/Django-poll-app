@@ -13,7 +13,7 @@ User = get_user_model()
 
 
 def send_confirmation_mail(username, email):
-  
+    print(email)
     try:
         user = User.objects.get(email=email)
         
@@ -35,4 +35,5 @@ def send_confirmation_mail(username, email):
         )
         return email.send(fail_silently=False)
     except Exception as e:
+        print(e)
         return ("Multiple user Found with  this email or no user found")
