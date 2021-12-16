@@ -13,11 +13,11 @@
 					
 					<a class="navbar-brand">Hello,{{user.first_name}}</a>
 					<a class="navbar-brand" href="{% url 'accounts:logout'  %}">Logout</a>
-					
+				</li>
 					
 					
 					{% else %}
-						
+					<li class="nav-item">
 						<a class="nav-link" href="{% url 'accounts:register'  %}">Register</a>
 					</li>
 					<li class="nav-item">

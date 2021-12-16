@@ -4,12 +4,16 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
 from accounts.tasks import send_confirmation_mail_task
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 
+
 class RegisterForm(UserCreationForm):
+    """
+    This class is used to register a new user
+    """
     username = forms.CharField(max_length=150, label_suffix=' :')
     email = forms.EmailField(max_length=80, label_suffix=' :')
-    
     
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -31,8 +35,11 @@ class RegisterForm(UserCreationForm):
         self.send_email()
         return main_user
 
+
 class UserLoginForm(AuthenticationForm):
-    """This class is used to create a new login form"""
+    """
+    This class is used to create a new login form
+    """
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control',
                                 'placeholder':'Username',
                                 'required': True, 'autofocus' : True}),

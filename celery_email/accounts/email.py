@@ -1,7 +1,5 @@
-from django.template import Context
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_text, force_str
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 from accounts.token_generator import account_activation_token
 from django.core.mail import EmailMessage
@@ -13,7 +11,9 @@ User = get_user_model()
 
 
 def send_confirmation_mail(username, email):
-    print(email)
+    """
+    This function is used to send confirmation email
+    """
     try:
         user = User.objects.get(email=email)
         
